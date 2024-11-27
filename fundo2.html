@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site de Apostas</title>
+    <style>
+        /* Reset de estilo básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilo do body e background */
+        body {
+            font-family: Arial, sans-serif;
+            background: #0744b4af;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Cabeçalho fixo */
+        header {
+            background: #327ae6fa;
+            width: 100%;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgb(0, 68, 255);
+        }
+
+        /* Logo e saldo do usuário */
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #001f3b;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .balance {
+            background: #0c8501;
+            color: #ffffff;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .btn-login, .btn-register {
+            background: #02a826;
+            color: #ffffff;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-login:hover, .btn-register:hover {
+            background: #ffffff;
+        }
+
+        /* Banner principal */
+        .banner {
+            margin-top: 60px;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(45deg, #025bcfaf, #04cbda);
+            text-align: center;
+            color: #fcfcfc;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        /* Área de conteúdo principal */
+        .main-content {
+            width: 90%;
+            max-width: 1200px;
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Área das apostas */
+        .bet-section {
+            flex: 3;
+            background: #031c8b;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .bet-section h2 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            color: #70baff;
+        }
+
+        .bet-option {
+            background: #3a3d50;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .bet-option button {
+            background: #32a007cc;
+            color: #ffffff;
+            padding: 5px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .bet-option button:hover {
+            background: #00f3df;
+        }
+
+        /* Área do painel lateral */
+        .side-panel {
+            flex: 1;
+            background: #054569;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .side-panel h3 {
+            color: #d1ff04;
+            font-size: 1.2em;
+        }
+
+        .side-panel-item {
+            background: #041377b4;
+            padding: 10px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Jogos Recomendados */
+        .recommended-section {
+            margin-top: 20px;
+            background: #032b99;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .recommended-section h2 {
+            color: #15fff3;
+            font-size: 1.3em;
+        }
+
+        .game-card {
+            background: #04e27a96;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .game-card button {
+            background: #07792d;
+            color: #e4e4e4;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        /* Tabela de apostas populares */
+        .popular-bets {
+            background: #008ce4;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .popular-bets h2 {
+            color: #eeff00;
+            margin-bottom: 15px;
+        }
+
+        .popular-bets table {
+            width: 100%;
+            color: #e4e4e4;
+            border-collapse: collapse;
+        }
+
+        .popular-bets th, .popular-bets td {
+            padding: 8px;
+            border-bottom: 1px solid #272e50;
+            text-align: center;
+        }
+
+        .popular-bets th {
+            background: #041377;
+            color: #64a7ff;
+        }
+        a {
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="logo">LIPI.BET</div>
+        <div class="user-info">
+            <div class="balance">Saldo: R$1500,00</div>
+            <button class="btn-login">Entrar</button>
+            <button class="btn-register">Cadastrar</button>
+        </div>
+    </header>
+
+    <!-- Banner principal -->
+    <div class="banner">
+        Promoção: Aumente suas chances acessando as áreas do conhecimento!
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+        <!-- Seção de Apostas -->
+        <div class="bet-section">
+            <h2>Áreas para apostar!</h2>
+            <div class="bet-option">
+                <span>Linguagens Odd 2.0x </span>
+                <button><a href="linguagens.html">Apostar</a></button>
+            </div>
+            <div class="bet-option">
+                <span>CHS Odd 1.50x</span>
+                <button><a href="chs.html">Apostar</a></button>
+            </div>
+            <div class="bet-option">
+                <span>CNT Odd 3.50x</span>
+                <button><a href= <button><a href="cnt.html">Apostar</a></button>
+            </div>
+            <div class="bet-option">
+                <span>Tecnico Odd 500x</span>
+                <button><a href= <button><a href="tecnico.html">Apostar</a></button>
+            </div>
+
+        
+            <div class="recommended-section">
+                <h2>Curriculo Pessoal</h2>
+                <div class="game-card">
+                    <span>Linkedin</span>
+                    <button><a href="linkedin.html">Apostar</a></button>
+                </div>
+                <div class="game-card">
+                    <span>GitHub</span>
+                    <button><a href="github.html">Apostar</a></button>
+                </div>
+                <div class="game-card">
+                    <span>Objetivo</span>
+                    <button><a href="objetivo.html">Apostar</a></button>
+                </div>
+            </div>
+
+            <!-- Tabela de apostas populares -->
+            <div class="popular-bets">
+                <h2>Apostas Populares</h2>
+                <table>
+                    <tr>
+                        <th>Hobbies</th>
+                        <th>Odds</th>
+                        <th>Favorito</th>
+                    </tr>
+                    <tr>
+                        <td>Futebol</td>
+                        <td>1.90</td>
+                        <td>Campo Society</td>
+                    </tr>
+                    <tr>
+                        <td>Marketing </td>
+                        <td>1.30</td>
+                        <td>Design</td>
+                    </tr>
+                    <tr>
+                        <td>Cassino</td>
+                        <td>1.50</td>
+                        <td>Slots</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Painel lateral -->
+        <div class="side-panel">
+            <h3>Jogos Ao vivo</h3>
+            <div class="side-panel-item">
+                <span>PA vs PV</span>
+                <span>Odd 1.50 Ambas Marcam</span>
+            </div>
+            <div class="side-panel-item">
+                <span>Alex vs Felipe</span
+                    
+                    
+               
